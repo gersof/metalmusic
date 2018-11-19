@@ -41,7 +41,6 @@ class ViewEvents extends Component {
                 <h2 style={{ textAlign: 'center' }}>Próximos eventos</h2>
                 <div className={classes.root}>
                     <Grid container spacing={24}>
-
                         {this.state.Events.map(event => {
                             return (
                                 <Grid item xs={3}>
@@ -49,12 +48,8 @@ class ViewEvents extends Component {
                                 </Grid>
                             )
                         })}
-
-
                     </Grid>
                 </div>
-
-
             </div>
         );
     }

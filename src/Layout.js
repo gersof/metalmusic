@@ -17,6 +17,12 @@ const styles = theme => ({
     root: {
         flexGrow: 1,
     },
+    container:{
+        paddingRight: 15,
+        paddingLeft: 15,
+        marginRight: 15,
+        marginLeft: 15
+      }
 
 });
 
@@ -29,9 +35,11 @@ function CenteredGrid(props) {
                 <Grid item xs={12}>
                     <Menu />
                 </Grid>
-                <Grid item xs={12}>
+                <Grid item xs={12} >
+                <div className={classes.container}>
                     <Router>
                         <Switch>
+                            <Route exact path="/" component={Home} />
                             <Route exact path="/layout/" component={Home} />
                             <Route exact path="/layout/home" component={Home} />
                             <Route exact path="/layout/events" component={ViewEvents} />
@@ -39,6 +47,7 @@ function CenteredGrid(props) {
                             <Route path="/**" component={Error404} />
                         </Switch>
                     </Router>
+                </div>
                 </Grid>
             </Grid>
         </div>

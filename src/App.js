@@ -17,8 +17,8 @@ class App extends Component {
         <Switch>
           <Route exact path="/" component={Layout} />
           <Route path="/layout" component={Layout} />
-          <Route path="/**" component={Error404} />
           <Route path="/login" exact component={Login} />
+          <Route path="/**" component={Error404} />
         </Switch>
       </Router>
     );
