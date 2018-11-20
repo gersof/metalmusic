@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
@@ -50,55 +50,68 @@ const styles = theme => ({
   }
 });
 
-function CenteredGrid(props) {
-  const { classes } = props;
+class Login extends Component {
+  constructor() {
+    super();
+    this.state = {};
+  }
 
-  return (
-    <div className={classes.container}>
-      <Grid
-        container
-        direction="row"
-        justify="center"
-        alignItems="center"
+  handleChange = name => event => {
+    this.setState({ [event.target.name]: event.target.value });
+  }
+  render() {
+    const { classes } = this.props;
 
-      >
-        <Grid item xs={4}>
-          <Paper
-            className={classes.paper}
-          >
-            <h2 style={{ textAlign: 'center' }}>Iniciar sessión.</h2>
-            <TextField
-              id="outlined-name"
-              label="Correo Electrónico"
-              className={classes.textField}
-              margin="normal"
-              variant="standard"
-              fullWidth="true"
-              required="true"
-            />
-            <TextField
-              id="outlined-name"
-              label="Contraseña"
-              className={classes.textField}
-              margin="normal"
-              variant="standard"
-              fullWidth="true"
-              type="password"
-              required="true"
-            />
-            <Button variant="contained" size="large" color="default" className={classes.button} fullWidth="true">
-              Entrar
+    return (
+      <div className={classes.container}>
+        <Grid
+          container
+          direction="row"
+          justify="center"
+          alignItems="center"
+
+        >
+          <Grid item xs={4}>
+            <Paper
+              className={classes.paper}
+            >
+              <h2 style={{ textAlign: 'center' }}>Iniciar sessión.</h2>
+              <TextField
+                label="Correo Electrónico"
+                className={classes.textField}
+                margin="normal"
+                variant="standard"
+                fullWidth={true}
+                required={true}
+                name="userName"
+                onChange={this.handleChange}
+              />
+              <TextField
+                label="Contraseña"
+                className={classes.textField}
+                margin="normal"
+                variant="standard"
+                fullWidth={true}
+                type="password"
+                required={true}
+                name="password"
+
+                onChange={this.handleChange}
+              />
+              <Button variant="contained" size="large" color="default" className={classes.button} fullWidth={true}>
+                Entrar
                 <Send className={classes.rightIcon}></Send>
-            </Button>
-          </Paper>
+              </Button>
+            </Paper>
+          </Grid>
         </Grid>
-      </Grid>
-    </div>
-  );
+      </div>
+    );
+  }
 }
 
-CenteredGrid.propTypes = {
+Login.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(CenteredGrid);
+export default withStyles(styles)(Login);
